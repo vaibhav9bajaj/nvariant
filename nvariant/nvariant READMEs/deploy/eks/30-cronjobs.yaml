@@ -1,0 +1,74 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: observability
+  namespace: nvariant
+spec:
+  schedule: "*/15 * * * *" # every 15 minutes
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: observability
+              image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/nvariant/observability:<TAG>
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: nvariant-config
+                - secretRef:
+                    name: nvariant-secrets
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: enforcement-warehouse
+  namespace: nvariant
+spec:
+  schedule: "0 * * * *" # hourly
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: enforcement-warehouse
+              image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/nvariant/enforcement-warehouse:<TAG>
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: nvariant-config
+                - secretRef:
+                    name: nvariant-secrets
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: advisory-ml
+  namespace: nvariant
+spec:
+  schedule: "30 2 * * *" # daily at 02:30
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: advisory-ml
+              image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/nvariant/advisory-ml:<TAG>
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: nvariant-config
+                - secretRef:
+                    name: nvariant-secrets

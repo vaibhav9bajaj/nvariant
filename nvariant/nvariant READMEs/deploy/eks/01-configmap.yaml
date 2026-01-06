@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvariant-config
+  namespace: nvariant
+data:
+  NODE_ENV: "production"
+  # Public URLs
+  CP_PUBLIC_URL: "https://cp.nvariant.io"
+  EXPLORER_PUBLIC_URL: "https://explorer.nvariant.io"
+  API_PUBLIC_URL: "https://api.nvariant.io"
+  # CORS allowlist for the API (comma-separated)
+  CORS_ALLOWLIST: "https://cp.nvariant.io,https://explorer.nvariant.io"
