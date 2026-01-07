@@ -1,0 +1,48 @@
+{
+  "name": "nvariant",
+  "version": "2.0.0",
+  "description": "Data Contract Enforcement & Advisory System",
+  "private": true,
+  "workspaces": [
+    "services/enforcement/*",
+    "services/observability",
+    "services/ml-advisory/*",
+    "services/ui/*",
+    "shared/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "start": "docker-compose up",
+    "start:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "build": "docker-compose build",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "clean": "docker-compose down -v --remove-orphans",
+    "setup": "npm install && npm run setup --workspaces --if-present"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaibhav9bajaj/nvariant"
+  },
+  "keywords": [
+    "data-governance",
+    "contract-enforcement",
+    "ml-advisory",
+    "schema-evolution",
+    "data-observability"
+  ],
+  "author": "nvariant team",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "volta": {
+    "node": "18.19.0",
+    "npm": "10.2.3"
+  }
+}
