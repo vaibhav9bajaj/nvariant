@@ -1,0 +1,11 @@
+{
+  "name": "nvariant-ml-advisory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "train": "node src/train.js",
+    "serve": "node src/server.js",
+    "test": "node --test"
+  }
+}
