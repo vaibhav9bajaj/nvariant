@@ -1,0 +1,38 @@
+name: build-and-push-images
+on:
+  push: { branches: [ "main" ] }
+  pull_request: {}
+env:
+  REGISTRY: registry.io
+  IMAGE_NAMESPACE: nvariant
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - canonical-api
+          - contract-registry
+          - enforcement
+          - observation
+          - lineage
+          - explorer-ui
+          - control-plane-ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Log in to registry
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login $REGISTRY -u "${{ secrets.REGISTRY_USER }}" --password-stdin
+      - name: Build (PR) / Build+Push (main)
+        run: |
+          IMAGE="$REGISTRY/$IMAGE_NAMESPACE/${{ matrix.image }}"
+          if [ -d "services/${{ matrix.image }}" ]; then CONTEXT="services/${{ matrix.image }}"; else CONTEXT="apps/${{ matrix.image }}"; fi
+          TAG="${{ github.sha }}"
+          docker buildx build --platform linux/amd64 -t "$IMAGE:$TAG" "$CONTEXT" --load
+          if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            docker push "$IMAGE:$TAG"
+            docker tag "$IMAGE:$TAG" "$IMAGE:latest"
+            docker push "$IMAGE:latest"
+          fi

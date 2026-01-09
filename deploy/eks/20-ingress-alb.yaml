@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nvariant-public
+  namespace: nvariant
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+spec:
+  rules:
+    - host: api.nvariant.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: { service: { name: canonical-api, port: { number: 80 } } }
+    - host: explorer.nvariant.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: { service: { name: explorer-ui, port: { number: 80 } } }
+    - host: cp.nvariant.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: { service: { name: control-plane-ui, port: { number: 80 } } }

@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: contract-registry
+  version: 2.0.0
+paths:
+  /health/live:
+    get: { responses: { "200": { description: OK } } }
+  /health/ready:
+    get: { responses: { "200": { description: OK } } }
+  /:
+    get:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { scopes: ["registry:read"] }
+      responses: { "200": { description: OK } }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
