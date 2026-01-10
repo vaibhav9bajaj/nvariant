@@ -1,0 +1,102 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: nvariant
+      POSTGRES_USER: nvariant
+      POSTGRES_PASSWORD: nvariant
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U nvariant"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  contract-registry:
+    build: services/contract-registry
+    environment:
+      INTERNAL_JWT_SECRET: dev-internal-secret
+      DATABASE_URL: postgres://nvariant:nvariant@db:5432/nvariant
+    depends_on:
+      db:
+        condition: service_healthy
+
+  enforcement:
+    build: services/enforcement
+    environment:
+      INTERNAL_JWT_SECRET: dev-internal-secret
+      DATABASE_URL: postgres://nvariant:nvariant@db:5432/nvariant
+    depends_on:
+      db:
+        condition: service_healthy
+
+  observation:
+    build: services/observation
+    environment:
+      INTERNAL_JWT_SECRET: dev-internal-secret
+      DATABASE_URL: postgres://nvariant:nvariant@db:5432/nvariant
+    depends_on:
+      db:
+        condition: service_healthy
+
+  lineage:
+    build: services/lineage
+    environment:
+      INTERNAL_JWT_SECRET: dev-internal-secret
+      DATABASE_URL: postgres://nvariant:nvariant@db:5432/nvariant
+    depends_on:
+      db:
+        condition: service_healthy
+
+  canonical-api:
+    build: services/canonical-api
+    environment:
+      INTERNAL_JWT_SECRET: dev-internal-secret
+      DEV_AUTH: "1"
+      CONTRACT_REGISTRY_URL: http://contract-registry:7001
+      ENFORCEMENT_URL: http://enforcement:7004
+      OBSERVATION_URL: http://observation:7008
+      LINEAGE_URL: http://lineage:7006
+    ports: ["3000:3000"]
+    depends_on:
+      contract-registry:
+        condition: service_started
+      enforcement:
+        condition: service_started
+      observation:
+        condition: service_started
+      lineage:
+        condition: service_started
+
+  explorer-ui:
+    build: apps/explorer-ui
+    environment:
+      VITE_API_BASE: http://localhost:3000
+      VITE_DEV_AUTH: "1"
+      # Production OIDC config (optional in dev)
+      VITE_OIDC_AUTHORITY: ""
+      VITE_OIDC_CLIENT_ID: ""
+      VITE_OIDC_REDIRECT_URI: ""
+      VITE_OIDC_POST_LOGOUT_REDIRECT_URI: ""
+      VITE_OIDC_AUDIENCE: ""
+      VITE_OIDC_SCOPE: "openid profile email"
+    ports: ["3100:80"]
+    depends_on:
+      canonical-api:
+        condition: service_started
+
+  control-plane-ui:
+    build: apps/control-plane-ui
+    environment:
+      VITE_API_BASE: http://localhost:3000
+      VITE_DEV_AUTH: "1"
+      VITE_OIDC_AUTHORITY: ""
+      VITE_OIDC_CLIENT_ID: ""
+      VITE_OIDC_REDIRECT_URI: ""
+      VITE_OIDC_POST_LOGOUT_REDIRECT_URI: ""
+      VITE_OIDC_AUDIENCE: ""
+      VITE_OIDC_SCOPE: "openid profile email"
+    ports: ["3200:80"]
+    depends_on:
+      canonical-api:
+        condition: service_started

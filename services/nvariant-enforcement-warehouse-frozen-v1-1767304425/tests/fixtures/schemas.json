@@ -1,0 +1,22 @@
+
+{
+  "base": [
+    {"name":"id","type":"INTEGER","nullable":false},
+    {"name":"email","type":"VARCHAR","nullable":true}
+  ],
+  "drop_email": [
+    {"name":"id","type":"INTEGER","nullable":false}
+  ],
+  "widen_id": [
+    {"name":"id","type":"BIGINT","nullable":false},
+    {"name":"email","type":"VARCHAR","nullable":true}
+  ],
+  "narrow_id": [
+    {"name":"id","type":"SMALLINT","nullable":false},
+    {"name":"email","type":"VARCHAR","nullable":true}
+  ],
+  "make_email_nonnull": [
+    {"name":"id","type":"INTEGER","nullable":false},
+    {"name":"email","type":"VARCHAR","nullable":false}
+  ]
+}

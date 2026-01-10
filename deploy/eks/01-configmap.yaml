@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvariant-config
+  namespace: nvariant
+data:
+  CONTRACT_REGISTRY_URL: "http://contract-registry:7001"
+  ENFORCEMENT_URL: "http://enforcement:7004"
+  OBSERVATION_URL: "http://observation:7008"
+  LINEAGE_URL: "http://lineage:7006"
