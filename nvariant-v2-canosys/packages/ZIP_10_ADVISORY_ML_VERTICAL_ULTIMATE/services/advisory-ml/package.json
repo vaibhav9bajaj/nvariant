@@ -1,0 +1,16 @@
+
+{
+  "name": "nvariant-advisory-ml",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "pg": "^8.11.3"
+  }
+}
