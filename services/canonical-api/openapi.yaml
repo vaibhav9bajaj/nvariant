@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: canonical-api
+  version: 2.0.0
+paths:
+  /health/live: { get: { responses: { "200": { description: OK } } } }
+  /health/ready: { get: { responses: { "200": { description: OK } } } }
+  /contracts:
+    get:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { roles: ["viewer","admin"] }
+      responses: { "200": { description: OK } }
+    post:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { roles: ["admin"] }
+      responses: { "201": { description: Created } }
+  /enforce:
+    post:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { roles: ["admin"] }
+      responses: { "200": { description: OK } }
+  /lineage:
+    get:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { roles: ["viewer","admin"] }
+      responses: { "200": { description: OK } }
+  /observe:
+    post:
+      security: [{ bearerAuth: [] }]
+      x-rbac: { roles: ["admin"] }
+      responses: { "202": { description: Accepted } }
+  /dev/token:
+    get: { responses: { "200": { description: Dev token } } }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

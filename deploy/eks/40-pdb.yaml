@@ -1,0 +1,6 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: canonical-api, namespace: nvariant }
+spec:
+  minAvailable: 1
+  selector: { matchLabels: { app: canonical-api } }

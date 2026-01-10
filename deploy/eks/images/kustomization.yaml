@@ -1,0 +1,11 @@
+images:
+  - name: canonical-api
+    newTag: latest
+  - name: contract-registry
+    newTag: latest
+  - name: enforcement
+    newTag: latest
+  - name: observation
+    newTag: latest
+  - name: lineage
+    newTag: latest

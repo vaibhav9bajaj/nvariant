@@ -1,0 +1,31 @@
+
+version: "3.9"
+
+services:
+  observability:
+    build:
+      context: ../nvariant-observability
+      dockerfile: ../deployment/docker/observability.Dockerfile
+    ports:
+      - "4000:4000"
+
+  ml-system:
+    build:
+      context: ../nvariant-ml-system
+      dockerfile: ../deployment/docker/ml-system.Dockerfile
+    ports:
+      - "6000:6000"
+
+  explorer-ui:
+    build:
+      context: ../nvariant-explorer-ui
+      dockerfile: ../deployment/docker/explorer-ui.Dockerfile
+    ports:
+      - "5173:5173"
+
+  control-plane-ui:
+    build:
+      context: ../nvariant-control-plane-ui
+      dockerfile: ../deployment/docker/control-plane-ui.Dockerfile
+    ports:
+      - "5174:5173"

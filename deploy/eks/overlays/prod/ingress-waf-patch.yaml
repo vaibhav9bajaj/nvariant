@@ -1,0 +1,8 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nvariant-public
+  namespace: nvariant
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: "<ACM_CERT_ARN>"
+    alb.ingress.kubernetes.io/wafv2-acl-arn: "<WAFV2_WEB_ACL_ARN>"

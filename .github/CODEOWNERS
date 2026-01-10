@@ -1,0 +1,4 @@
+* @your-org/platform
+/services/ @your-org/platform
+/apps/ @your-org/frontend
+/deploy/ @your-org/platform

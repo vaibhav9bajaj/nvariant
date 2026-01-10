@@ -1,0 +1,8 @@
+# NOTE: This file is intentionally left as a placeholder in Pack 2.
+# Generate a real lockfile by running:
+#   pnpm install
+# Then commit the resulting pnpm-lock.yaml.
+lockfileVersion: '9.0'
+settings: {}
+importers: {}
+packages: {}
