@@ -1,12 +1,66 @@
 {
   "name": "nvariant-v2",
+  "version": "2.0.0",
+  "description": "Data contract enforcement and observability platform",
   "private": true,
   "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
-    "lint": "pnpm -r lint || true",
-    "format": "pnpm -r format || true",
-    "typecheck": "pnpm -r typecheck || true",
-    "test": "pnpm -r test || true",
-    "build": "pnpm -r build || true"
-  }
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "test:coverage": "turbo run test:coverage",
+    "clean": "turbo run clean",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up",
+    "docker:down": "docker compose down",
+    "prepare": "husky install",
+    "postinstall": "pnpm build",
+    "security:audit": "pnpm audit --audit-level moderate",
+    "deps:check": "pnpm outdated",
+    "deps:update": "pnpm update --latest"
+  },
+  "keywords": [
+    "data-contracts",
+    "data-governance", 
+    "observability",
+    "microservices",
+    "monorepo"
+  ],
+  "author": "nvariant team",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^20.10.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,json,md}": ["prettier --write"],
+    "*.{js,ts,tsx}": ["eslint --fix"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaibhav9bajaj/nvariant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vaibhav9bajaj/nvariant/issues"
+  },
+  "homepage": "https://github.com/vaibhav9bajaj/nvariant#readme"
 }
