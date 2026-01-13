@@ -1,0 +1,24 @@
+scan warn
+HEX
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/components/TableList.tsx:15:            <tr key={t.key} style={{background: selected===t.key?'#fafbff':'transparent', cursor:'pointer'}} onClick={() => onSelect(t.key)}>
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/components/LineageGraph.tsx:8:  return '#2a2a2a'
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/components/LineageGraph.tsx:36:          return <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#cbd2e1" strokeWidth="2" />
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/components/LineageGraph.tsx:42:              <rect x={p.x-60} y={p.y-18} width={140} height={36} rx="10" fill="#fff" stroke="#e6e8ee" />
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:3:body { margin: 0; background: #f6f7f9; color: #111; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:6:.card { background: white; border: 1px solid #e6e8ee; border-radius: 12px; padding: 12px; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:12:.badge.warn { border-color:#f0c36d; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:13:.badge.block { border-color:#e09090; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:14:.badge.allow { border-color:#b7d7a8; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:16:.table th, .table td { text-align:left; border-bottom: 1px solid #eef0f5; padding: 8px; font-size: 13px; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:17:.input { width: 100%; padding: 8px 10px; border-radius: 10px; border:1px solid #dfe3ee; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:18:.btn { padding: 8px 12px; border-radius: 10px; border: 1px solid #dfe3ee; background: white; cursor: pointer; font-weight: 600; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:20:.nav { display:flex; gap: 10px; align-items:center; padding: 12px 16px; background: white; border-bottom: 1px solid #e6e8ee; position: sticky; top:0; z-index:5; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:23:.tab { padding: 6px 10px; border-radius: 10px; border:1px solid #e6e8ee; background:#fff; font-weight:700; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:26:.kv > div { background:#fafbfc; border: 1px solid #eef0f5; border-radius: 10px; padding: 8px; font-size: 12px; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:27:.diffAdd { color: #0a7a2f; font-weight: 700; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:28:.diffDel { color: #b32121; font-weight: 700; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/contract.css:1::root{--nv-ink:var(--nv-ink);--nv-charcoal:var(--nv-charcoal);--nv-slate:var(--nv-slate);--nv-border:var(--nv-border);--nv-bg:#FFFFFF;--nv-ok:var(--nv-ok);--nv-warn:var(--nv-warn);--nv-error:var(--nv-error);--nv-info:var(--nv-info);--nv-font-primary:"Inter",system-ui,sans-serif;--nv-font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;}
+FONT
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/src/styles.css:2::root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+./build/assembled/nvariant-explorer-ui-frozen-v1-1767305190/contract.css:2:html,body{font-family:var(--nv-font-primary)!important;color:var(--nv-ink);background:var(--nv-bg);}
+report ./reports/design_scan_warn_20260103_050519.txt

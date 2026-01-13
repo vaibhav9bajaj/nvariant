@@ -1,0 +1,18 @@
+== UI Fingerprint Report ==
+ROOT: /mnt/data/nvariant-design-enforcement/build/assembled
+
+- ZIP4-observability-v2-1767318944: vite (vite.config.*)
+- ZIP8-ml-system-v2-1767318944: vite (vite.config.*)
+- ZIP_07_CONTROL_PLANE_UI_FINAL: vite (vite.config.*)
+- ZIP_10_ADVISORY_ML_VERTICAL_FINAL: vite (vite.config.*)
+- ZIP_10_ADVISORY_ML_VERTICAL_ULTIMATE: vite (vite.config.*)
+- ZIP_12_OPS_HARDENING_FINAL: vite (vite.config.*)
+- nvariant-canonical-v2-frozen-1767319109: vite (vite.config.*)
+- nvariant-deployment-ops-frozen-v1-1767305718: vite (vite.config.*)
+- nvariant-enforcement-ci-frozen-v1-1767304750: vite (package.json vite.config.*)
+- nvariant-enforcement-runtime-frozen-v1-1767304626: vite (package.json vite.config.*)
+- nvariant-enforcement-warehouse-frozen-v1-1767304425: vite (package.json vite.config.*)
+- nvariant-explorer-ui-frozen-v1-1767305190: vite (package.json vite.config.*)
+- nvariant-ml-advisory-frozen-v1-1767304918: vite (package.json vite.config.*)
+
+Report: /mnt/data/nvariant-design-enforcement/reports/ui_fingerprint_20260103_045318.txt

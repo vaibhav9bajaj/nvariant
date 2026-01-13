@@ -1,0 +1,14 @@
+UI Fingerprint
+- ZIP4-observability-v2-1767318944: unknown
+- ZIP8-ml-system-v2-1767318944: unknown
+- ZIP_07_CONTROL_PLANE_UI_FINAL: unknown
+- ZIP_10_ADVISORY_ML_VERTICAL_FINAL: unknown
+- ZIP_10_ADVISORY_ML_VERTICAL_ULTIMATE: unknown
+- ZIP_12_OPS_HARDENING_FINAL: unknown
+- nvariant-canonical-v2-frozen-1767319109: unknown
+- nvariant-deployment-ops-frozen-v1-1767305718: unknown
+- nvariant-enforcement-ci-frozen-v1-1767304750: unknown
+- nvariant-enforcement-runtime-frozen-v1-1767304626: unknown
+- nvariant-enforcement-warehouse-frozen-v1-1767304425: unknown
+- nvariant-explorer-ui-frozen-v1-1767305190: vite
+- nvariant-ml-advisory-frozen-v1-1767304918: unknown
